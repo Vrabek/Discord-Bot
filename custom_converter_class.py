@@ -15,6 +15,5 @@ class Slapper(commands.Converter):
         
         if self.use_nicknames:
             nickname = ctx.author.name
-            #rint(nickname)
             
         return f"{nickname} slaps {someone}"
