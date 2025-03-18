@@ -12,3 +12,7 @@ class User(BaseModel):
         except:
             user = User.create(user_id=user_id)
         return user
+    
+    @staticmethod
+    def get_leaderboard(limit=10):
+        return User.select().order_by(User.total_points.desc()).limit(limit)

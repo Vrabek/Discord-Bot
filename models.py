@@ -5,7 +5,9 @@ from cogs.module_classes.models import BaseModel
 
 class PointType(enum.Enum):
     MESSAGE = 3
+    COMMAND = 2
     REACTION = 1
+    
 
 class UserActivity(BaseModel):
     MODE_ADD = 'ADD'

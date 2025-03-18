@@ -12,7 +12,7 @@ import database
 
 
 
-cogs = ['cogs.error_handler', 'cogs.greetings']
+cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
 
 
 def setup_tables():
@@ -20,16 +20,12 @@ def setup_tables():
 
 def runtime():
     
-    
-        #logger.info(f"Settting up tables" )
     setup_tables()
-        #logger.info(f"Table setup has finished succesfully" )
-    
-        #logger.info(f"Table setup has failed" )
-
-    
     intents = dis.Intents.default()
     intents.message_content = True
+    intents.members = True
+    intents.guilds = True 
+    intents.messages = True
 
     bot = DiscordBot(command_prefix='!', intents=intents)
     bot.initialise()
@@ -37,10 +33,9 @@ def runtime():
 
     @bot.event
     async def on_ready():
-        
         for cog in cogs:
-            
             await bot.load_extension(cog)
+        
             
 
     
@@ -53,19 +48,6 @@ def runtime():
     )
     async def ping(ctx):
         await ctx.send('pong')
-
-    @bot.command(
-        help = 'Outputs string supplied by user.',
-        description = 'Outputs string supplied by user.',
-        brief = 'Outputs user string',
-        enabled = True,
-        hidden = False
-    )
-    async def say(ctx, *params):
-        if not params:
-            await ctx.send('No data was supplied')
-        else:
-            await ctx.send(" ".join(params))
 
     @bot.command(
         help = 'Outputs date when a specified user joined the discord channel',
@@ -82,11 +64,11 @@ def runtime():
     @bot.event
     async def on_message(message: dis.Message):
         ctx = await bot.get_context(message)
-        print(ctx)
+        await bot.process_commands(message)
         if not ctx.valid:
             if not message.author.bot:
                 await bot.process_message(message)
-        #await bot.process_message(message)
+            
 
     @bot.event
     async def on_raw_reaction_add(payload: dis.RawReactionActionEvent):

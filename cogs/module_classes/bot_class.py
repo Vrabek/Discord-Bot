@@ -14,3 +14,4 @@ class DiscordBot(commands.Bot):
     
     async def process_reaction(self, payload: dis.RawReactionActionEvent):
         await self.ranks.process_reaction(payload)
+    
