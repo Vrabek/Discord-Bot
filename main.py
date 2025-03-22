@@ -2,14 +2,12 @@
 #from custom_converter_class import Slapper
 from cogs.module_classes.bot_class import DiscordBot
 from users.model import User
-from models import UserActivity
+from user_activity.models import UserActivity
 #external libraries/modules
 from discord.ext import commands
 import discord as dis
 import settings
 import database
-
-
 
 
 cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
@@ -35,9 +33,6 @@ def runtime():
     async def on_ready():
         for cog in cogs:
             await bot.load_extension(cog)
-        
-            
-
     
     @bot.command(
         help = 'Outputs information about bots connection latency.',

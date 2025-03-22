@@ -1,5 +1,5 @@
 import peewee
-from cogs.module_classes.models import BaseModel
+from my_database.models import BaseModel
 
 class User(BaseModel):
     user_id = peewee. CharField(max_length=100)

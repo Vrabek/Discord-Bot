@@ -1,7 +1,7 @@
 import enum
 import peewee
 from users.model import User
-from cogs.module_classes.models import BaseModel
+from my_database.models import BaseModel
 
 class PointType(enum.Enum):
     MESSAGE = 3

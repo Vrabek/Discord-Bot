@@ -1,5 +1,5 @@
 import discord as dis
-from models import UserActivity, PointType
+from user_activity.models import UserActivity, PointType
 from users.model import User
 
 
