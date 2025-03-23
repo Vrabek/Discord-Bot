@@ -16,3 +16,5 @@ class DiscordBot(commands.Bot):
         member = await self.fetch_user(payload.user_id)
         await self.ranks.process_reaction(payload, member)
     
+    async def process_thread(self, thread: dis.Thread):
+        await self.ranks.process_thread(thread)

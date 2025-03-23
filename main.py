@@ -1,5 +1,4 @@
 #local files
-#from custom_converter_class import Slapper
 from module_classes.bot_class import DiscordBot
 from users.model import User
 from user_activity.models import UserActivity
@@ -16,6 +15,7 @@ cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
 
 def setup_tables():
     database.db.create_tables([User, UserActivity])
+    database.db.execute_sql(database.total_points_per_user)
 
 def runtime():
     
@@ -79,20 +79,23 @@ def runtime():
 
     @bot.event
     async def on_raw_reaction_add(payload: dis.RawReactionActionEvent):
-        await bot.process_reaction(payload)
+        if not payload.member.bot:
+            await bot.process_reaction(payload)
     
     @bot.event
     async def on_raw_reaction_remove(payload: dis.RawReactionActionEvent):
-        await bot.process_reaction(payload)
+        if not payload.member.bot:
+            await bot.process_reaction(payload)
 
     @bot.event
     async def on_socket_event_type(data):
+        # My little helper
         print(f'Socket response received! {data}')
-
     
     @bot.event
     async def on_thread_create(thread):
-        pass
+        if not thread.author.bot:
+            await bot.process_thread(thread)
         
     bot.run(settings.DISCORD_API_SECRET, root_logger= True)
 
