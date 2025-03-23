@@ -1,6 +1,6 @@
 #local files
 #from custom_converter_class import Slapper
-from cogs.module_classes.bot_class import DiscordBot
+from module_classes.bot_class import DiscordBot
 from users.model import User
 from user_activity.models import UserActivity
 #external libraries/modules
@@ -8,6 +8,7 @@ from discord.ext import commands
 import discord as dis
 import settings
 import database
+import json
 
 
 cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
@@ -19,12 +20,23 @@ def setup_tables():
 def runtime():
     
     setup_tables()
-    intents = dis.Intents.default()
-    intents.message_content = True
-    intents.members = True
-    intents.guilds = True 
-    intents.messages = True
+    '''
+    try:
+        with open("intents.json", "r") as json_file:
+            intents_config = json.load(json_file)
 
+        intents = dis.Intents.default()
+
+        for key, value in intents_config.items():
+
+            if hasattr(intents, key):
+                setattr(intents, key, value == "True")
+    except:
+        print(f'An error occured when importing Intents config from {json_file}')
+    '''
+
+    intents = dis.Intents.default()
+    intents = dis.Intents.all()
     bot = DiscordBot(command_prefix='!', intents=intents)
     bot.initialise()
 
@@ -72,6 +84,15 @@ def runtime():
     @bot.event
     async def on_raw_reaction_remove(payload: dis.RawReactionActionEvent):
         await bot.process_reaction(payload)
+
+    @bot.event
+    async def on_socket_event_type(data):
+        print(f'Socket response received! {data}')
+
+    
+    @bot.event
+    async def on_thread_create(thread):
+        pass
         
     bot.run(settings.DISCORD_API_SECRET, root_logger= True)
 

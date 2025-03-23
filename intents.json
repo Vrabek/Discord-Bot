@@ -1,0 +1,14 @@
+{
+    "message_content":  "True",
+    "guilds":  "True",
+    "members":  "True",
+    "reactions":  "True",
+    "messages":  "True",
+    "guild_reactions":  "True",
+    "presences":  "True",
+    "voice_states":  "True",
+    "typing":  "True",
+    "guild_scheduled_events":  "True",
+    "guild_messages":  "True",
+    "guild_message_reactions":  "True"
+}

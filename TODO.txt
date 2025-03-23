@@ -1,0 +1,29 @@
+event_type	Description
+MESSAGE_CREATE	A message was sent in a channel
+MESSAGE_UPDATE	A message was edited
+MESSAGE_DELETE	A message was deleted
+MESSAGE_DELETE_BULK	Multiple messages were deleted at once
+REACTION_ADD	A reaction was added to a message
+REACTION_REMOVE	A reaction was removed from a message
+REACTION_REMOVE_ALL	All reactions were removed from a message
+REACTION_REMOVE_EMOJI	A specific emoji’s reactions were removed from a message
+TYPING_START	A user started typing in a channel
+GUILD_CREATE	Bot joined a guild (or received guild info at startup)
+GUILD_DELETE	Bot left a guild / guild was deleted
+GUILD_UPDATE	Guild settings changed
+GUILD_MEMBER_ADD	A user joined the guild
+GUILD_MEMBER_REMOVE	A user left or was kicked from the guild
+GUILD_MEMBER_UPDATE	A member’s role or nickname changed
+GUILD_ROLE_CREATE	A new role was created in the guild
+GUILD_ROLE_DELETE	A role was deleted
+CHANNEL_CREATE	A channel was created
+CHANNEL_DELETE	A channel was deleted
+CHANNEL_UPDATE	A channel’s settings were updated
+VOICE_STATE_UPDATE	User joined/left/muted in a voice channel
+PRESENCE_UPDATE	User’s online status or activity changed
+USER_UPDATE	The current bot user’s info (e.g., avatar) changed
+INTERACTION_CREATE	A slash command, button, or menu interaction occurred
+STAGE_INSTANCE_CREATE	A stage channel session started
+THREAD_CREATE	A thread was created
+THREAD_UPDATE	A thread was updated
+THREAD_DELETE	A thread was deleted

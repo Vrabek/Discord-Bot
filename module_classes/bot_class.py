@@ -1,5 +1,5 @@
 from discord.ext import commands
-from cogs.module_classes.ranks import Ranks
+from module_classes.ranks import Ranks
 import discord as dis
 
 
@@ -13,5 +13,6 @@ class DiscordBot(commands.Bot):
        await self.ranks.process_message(message)
     
     async def process_reaction(self, payload: dis.RawReactionActionEvent):
-        await self.ranks.process_reaction(payload)
+        member = await self.fetch_user(payload.user_id)
+        await self.ranks.process_reaction(payload, member)
     
