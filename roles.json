@@ -1,0 +1,102 @@
+{
+    "1": {
+        "role_name": "Milczący Cień",
+        "role_permissions": "ALL",
+        "role_colour": "0x206694",
+        "role_source": "JSON",
+        "hoist": "False",
+        "mentionable": "True",
+        "min_points": 0,
+        "max_points": 50
+    },
+    "2": {
+        "role_name": "Szept Zza Grobu",
+        "role_permissions": "ALL",
+        "role_colour": "0x3498DB",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 50,
+        "max_points": 150
+    },
+    "3": {
+        "role_name": "Wieczny Rozmówca",
+        "role_permissions": "ALL",
+        "role_colour": "0x1ABC9C",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 150,
+        "max_points": 300
+    },
+    "4": {
+        "role_name": "Gadający Krzyż",
+        "role_permissions": "ALL",
+        "role_colour": "0x57F287",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 300,
+        "max_points": 500
+    },
+    "5": {
+        "role_name": "Język Plugawy",
+        "role_permissions": "ALL",
+        "role_colour": "0x71368A",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 500,
+        "max_points": 750
+    },
+    "6": {
+        "role_name": "Książę Paplaniny",
+        "role_permissions": "ALL",
+        "role_colour": "0x9B59B6",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 750,
+        "max_points": 1050
+    },
+    "7": {
+        "role_name": "Kruczy Bełkot",
+        "role_permissions": "ALL",
+        "role_colour": "0xAD1457",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 1050,
+        "max_points": 1400
+    },
+    "8": {
+        "role_name": "Głos Bez Końca",
+        "role_permissions": "ALL",
+        "role_colour": "0xE91E63",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 1400,
+        "max_points": 1800
+    },
+    "9": {
+        "role_name": "Władca Jazgotu",
+        "role_permissions": "ALL",
+        "role_colour": "0xC27C0E",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 1800,
+        "max_points": 2250
+    },
+    "10": {
+        "role_name": "Wieża Słów",
+        "role_permissions": "ALL",
+        "role_colour": "0xF1C40F",
+        "role_source": "JSON",
+        "hoist": "True",
+        "mentionable": "True",
+        "min_points": 2250,
+        "max_points": 2750
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "top_users": "CREATE VIEW IF NOT EXISTS user_total_points_view AS SELECT user_id,  user_nickname,  total_points FROM   user ORDER BY     total_points DESC LIMIT 5",
-    "top_attention_seekers_view": "CREATE VIEW IF NOT EXISTS top_attention_seekers_view AS SELECT user_nickname, SUM(CASE WHEN a.activity_subtype='MENTION_ALL' THEN 50+points WHEN a.activity_subtype='MENTION_ROLE' THEN 20+points WHEN a.activity_subtype='MENTION_CHANNEL' THEN 10+points WHEN a.activity_subtype='MENTION_USER' THEN 5+points ELSE points END) as attention_points FROM useractivity a JOIN user b on a.user_id = b.id GROUP BY user_nickname ORDER BY attention_points DESC LIMIT 5;",
-    "members":  "True"
+    "top_user": "CREATE VIEW IF NOT EXISTS user_total_points_view AS SELECT user_id,  user_nickname,  total_points FROM   user ORDER BY     total_points DESC LIMIT 1",
+    "top_attention_seeker": "CREATE VIEW IF NOT EXISTS top_attention_seekers_view AS SELECT user_nickname, SUM(CASE WHEN a.activity_subtype='MENTION_ALL' THEN 50+points WHEN a.activity_subtype='MENTION_ROLE' THEN 20+points WHEN a.activity_subtype='MENTION_CHANNEL' THEN 10+points WHEN a.activity_subtype='MENTION_USER' THEN 5+points ELSE points END) as attention_points FROM useractivity a JOIN user b on a.user_id = b.id GROUP BY user_nickname ORDER BY attention_points DESC LIMIT 1;",
+    "user_role": "CREATE VIEW IF NOT EXISTS user_role AS SELECT u.user_id, u.user_nickname, u.total_points, r.role_name FROM user u JOIN roles r ON u.total_points >= r.min_points AND u.total_points < r.max_points;"
 }

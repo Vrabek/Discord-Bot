@@ -2,6 +2,7 @@
 from module_classes.bot_class import DiscordBot
 from users.model import User
 from user_activity.models import UserActivity
+from my_database.models import Roles
 #external libraries/modules
 from discord.ext import commands
 import discord as dis
@@ -13,14 +14,16 @@ import json
 cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
 
 
-def setup_tables():
-    database.db.create_tables([User, UserActivity])
-    database.db.execute_sql(database.total_points_per_user)
+def setup_db_objects():
+    database.db.create_tables([User, UserActivity, Roles])
+    database.init_views()
+    Roles.initalize_roles()
+    print('Database objects created!')
 
 def runtime():
     
-    setup_tables()
-    '''
+    setup_db_objects()
+    
     try:
         with open("intents.json", "r") as json_file:
             intents_config = json.load(json_file)
@@ -33,10 +36,10 @@ def runtime():
                 setattr(intents, key, value == "True")
     except:
         print(f'An error occured when importing Intents config from {json_file}')
-    '''
+    
 
-    intents = dis.Intents.default()
-    intents = dis.Intents.all()
+    #intents = dis.Intents.default()
+    #intents = dis.Intents.all()
     bot = DiscordBot(command_prefix='!', intents=intents)
     bot.initialise()
 

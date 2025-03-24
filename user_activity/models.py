@@ -5,10 +5,10 @@ from my_database.models import BaseModel
 
 class PointType(enum.Enum):
     # Activity Types and their corresponding points
-    MESSAGE = 3
+    MESSAGE = 2
     COMMAND = 2
     REACTION = 1
-    THREAD = 5
+    THREAD = 3
 
     @property
     def point_name(self):
@@ -18,10 +18,10 @@ class PointSubType(enum.Enum):
     # Activity Subtypes and their corresponding points
     MENTION_ALL = 1
     MENTION_ROLE = 2
-    MENTION_USER = 3
-    MENTION_CHANNEL = 4
+    MENTION_USER = 2
+    MENTION_CHANNEL = 3
     ATTACHMENT = 5
-    STICKER = 6
+    STICKER = 2
     TTS = 7
     UNSPECIFIED = 0
 
