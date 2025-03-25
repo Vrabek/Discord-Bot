@@ -8,13 +8,13 @@ class DiscordBot(commands.Bot):
     ranks : Ranks
     role_menager : RoleMenager
 
+    GUILD_ID = 1333466935815442462
+
     def initialise(self):
         self.ranks = Ranks()
         self.role_menager = RoleMenager()
 
-    async def initialize_roles(self):
-        await self.role_menager.initalize_roles()
-        
+    """Ranks methods"""
     async def process_message(self, message: dis.Message):
        await self.ranks.process_message(message)
     
@@ -24,3 +24,14 @@ class DiscordBot(commands.Bot):
     
     async def process_thread(self, thread: dis.Thread):
         await self.ranks.process_thread(thread)
+        
+    """Roles methods"""
+    async def initialize_db_roles(self, GUILD_ID=GUILD_ID):
+        guild_id = GUILD_ID
+        guild = self.get_guild(guild_id)
+        await self.role_menager.initialiaze_db_roles(guild)
+
+    async def apply_roles_from_user_role_view(self, GUILD_ID=GUILD_ID):
+        guild_id = GUILD_ID
+        guild = self.get_guild(guild_id)
+        await self.role_menager.apply_roles_from_user_role_view(guild)

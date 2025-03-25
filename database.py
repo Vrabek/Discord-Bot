@@ -2,13 +2,6 @@ import peewee
 import json
 db = peewee.SqliteDatabase('bot.db')
 
-
-
-def create_scoring_tables():
-    pass
-
-
-
 def init_views():
 
     with open('sql_views.json', 'r') as json_file:

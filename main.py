@@ -2,7 +2,7 @@
 from module_classes.bot_class import DiscordBot
 from users.model import User
 from user_activity.models import UserActivity
-from my_database.models import Roles
+from roles.models import Roles
 #external libraries/modules
 from discord.ext import commands
 import discord as dis
@@ -15,8 +15,11 @@ cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
 
 
 def setup_db_objects():
+    #creates all the tables in the database
     database.db.create_tables([User, UserActivity, Roles])
+    #creates views from sql_views.json
     database.init_views()
+    #populates the Roles table with default roles from roles.json
     Roles.initalize_roles()
     print('Database objects created!')
 
@@ -24,6 +27,7 @@ def runtime():
     
     setup_db_objects()
     
+    """TODO Need to dump it elsewhere"""
     try:
         with open("intents.json", "r") as json_file:
             intents_config = json.load(json_file)
@@ -36,18 +40,22 @@ def runtime():
                 setattr(intents, key, value == "True")
     except:
         print(f'An error occured when importing Intents config from {json_file}')
-    
 
-    #intents = dis.Intents.default()
-    #intents = dis.Intents.all()
     bot = DiscordBot(command_prefix='!', intents=intents)
     bot.initialise()
+     
 
 
     @bot.event
     async def on_ready():
         for cog in cogs:
             await bot.load_extension(cog)
+        
+        # create roles inside the guild from the database
+        await bot.initialize_db_roles()
+        # hopefully manages the roles based on the user_role view
+        await bot.apply_roles_from_user_role_view()
+        print('Bot is ready!')
     
     @bot.command(
         help = 'Outputs information about bots connection latency.',
