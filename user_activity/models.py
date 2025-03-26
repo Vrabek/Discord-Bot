@@ -4,7 +4,7 @@ from users.model import User
 from my_database.models import BaseModel
 
 class PointType(enum.Enum):
-    # Activity Types and their corresponding points
+    """Activity Types and their corresponding points"""
     MESSAGE = 2
     COMMAND = 2
     REACTION = 1
@@ -15,7 +15,7 @@ class PointType(enum.Enum):
         return self.name
 
 class PointSubType(enum.Enum):
-    # Activity Subtypes and their corresponding points
+    """Activity Subtypes and their corresponding points"""
     MENTION_ALL = 1
     MENTION_ROLE = 2
     MENTION_USER = 2
@@ -30,6 +30,16 @@ class PointSubType(enum.Enum):
         return self.name
     
 class UserActivity(BaseModel):
+    """
+    Represents the activity of a user in the system
+    Attributes:
+        user (str): A unique identifier for the user.
+        activity_id (str): A unique identifier for the activity.
+        activity_type (str): The type of activity.
+        activity_subtype (str): The subtype of activity.
+        points (float): The points accumulated by the user.
+        mode (str): The mode of the activity.
+    """
     MODE_ADD = 'ADD'
     MODE_REDUCE = 'REDUCE'
 
@@ -46,7 +56,7 @@ class UserActivity(BaseModel):
     mode = peewee.CharField(choices= MODE_CHOICES, default=MODE_ADD)
 
     def record_new_points(self, point_type: PointType, point_subtype: PointSubType, mode: str):
-
+        """Records the points for the user in USER and USER_ACTIVITY table"""
         points = point_type.value + point_subtype.value
         current_total_points = UserActivity.get_points(self.user.user_id)
 

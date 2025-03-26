@@ -8,7 +8,7 @@ class Greetings(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if 'nigga' in message.content:
+        if 'lord' in message.content:
             await message.add_reaction("✅")
     
     @commands.command()

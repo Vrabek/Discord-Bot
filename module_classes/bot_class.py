@@ -7,7 +7,7 @@ from module_classes.roles import RoleMenager
 class DiscordBot(commands.Bot):
     ranks : Ranks
     role_menager : RoleMenager
-
+    
     GUILD_ID = 1333466935815442462
 
     def initialise(self):

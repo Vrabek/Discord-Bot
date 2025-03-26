@@ -82,8 +82,5 @@ class RoleMenager:
             role = dis.utils.get(guild.roles, name=user_role.role_name)
             # Check if member and role exist
             if member and role:
-                if role in member.roles:
-                    print(f"Role '{user_role.role_name}' already granted to {member.display_name}.")
-                else:
+                if not role in member.roles:
                     await self.grant_role(member, user_role.role_name)
-                    print(f"Role '{user_role.role_name}' granted to {member.display_name}.")
