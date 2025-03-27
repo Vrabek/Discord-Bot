@@ -1,3 +1,5 @@
-1.specialne role top_user, top_attention_seeking_user
-2.wbudowanie funkcji nadawania ról
-3.rozbudowa kommend
+
+2. rozbudowa kommend
+3. specialne role top_user, top_attention_seeking_user
+4. implementacja logger
+5. naprawić sposób rozpoznawania typu wiadomości i przypisywanie punktów dodatkowych

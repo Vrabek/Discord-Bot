@@ -52,10 +52,9 @@ def runtime():
         
         # create roles inside the guild from the database
         await bot.initialize_db_roles()
-        # hopefully manages the roles based on the user_role view
-        await bot.apply_roles_from_user_role_view()
         print('Bot is ready!')
 
+        # manages the roles based on the user_role view in loop
         if not update_user_roles.is_running():
             update_user_roles.start(bot)
    

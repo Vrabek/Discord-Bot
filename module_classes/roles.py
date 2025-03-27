@@ -74,13 +74,26 @@ class RoleMenager:
         '''Grants or revokes roles based on the user role view'''
         print("Applying roles from user_role view.")
         user_roles = UserRole.select()
+        role_names = [role.role_name for role in Roles.select()]
+
         print(f"Found {len(user_roles)} user roles.")
 
+        # Iterate through each user role and grant the role to the member
         for user_role in user_roles:
             member = guild.get_member(int(user_role.user_id))
-            print(f'{user_role.user_id}, {type(member)}')
             role = dis.utils.get(guild.roles, name=user_role.role_name)
             # Check if member and role exist
             if member and role:
-                if not role in member.roles:
+                memeber_roles = [member_role.name for member_role in member.roles]
+                # if member has a role that is not in the user_role table and it is in Roles table, remove it 
+                if any(member_role in role_names for member_role in memeber_roles):
+                    matching_roles = [member_role for member_role in memeber_roles if member_role in role_names]
+                    for matching_role in matching_roles:
+                        if matching_role != user_role.role_name:
+                            await self.revoke_role(member, matching_role)
+
+                # Check if the member has the role already
+                if role.id not in [r.id for r in member.roles]:
                     await self.grant_role(member, user_role.role_name)
+            
+                    

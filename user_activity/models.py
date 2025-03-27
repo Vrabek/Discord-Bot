@@ -17,11 +17,11 @@ class PointType(enum.Enum):
 class PointSubType(enum.Enum):
     """Activity Subtypes and their corresponding points"""
     MENTION_ALL = 1
-    MENTION_ROLE = 2
-    MENTION_USER = 2
-    MENTION_CHANNEL = 3
+    MENTION_ROLE = 4
+    MENTION_USER = 3
+    MENTION_CHANNEL = 2
     ATTACHMENT = 5
-    STICKER = 2
+    STICKER = 6
     TTS = 7
     UNSPECIFIED = 0
 
