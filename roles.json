@@ -1,7 +1,7 @@
 {
     "1": {
         "role_name": "Milczący Cień",
-        "role_permissions": "ALL",
+        "role_permissions": "DEFAULT",
         "role_colour": "0x206694",
         "role_source": "JSON",
         "hoist": "False",
@@ -11,7 +11,7 @@
     },
     "2": {
         "role_name": "Szept Zza Grobu",
-        "role_permissions": "ALL",
+        "role_permissions": "DEFAULT",
         "role_colour": "0x3498DB",
         "role_source": "JSON",
         "hoist": "True",
@@ -21,7 +21,7 @@
     },
     "3": {
         "role_name": "Wieczny Rozmówca",
-        "role_permissions": "ALL",
+        "role_permissions": "DEFAULT",
         "role_colour": "0x1ABC9C",
         "role_source": "JSON",
         "hoist": "True",
@@ -31,7 +31,7 @@
     },
     "4": {
         "role_name": "Gadający Krzyż",
-        "role_permissions": "ALL",
+        "role_permissions": "STAGE_MODERATOR",
         "role_colour": "0x57F287",
         "role_source": "JSON",
         "hoist": "True",
@@ -41,7 +41,7 @@
     },
     "5": {
         "role_name": "Język Plugawy",
-        "role_permissions": "ALL",
+        "role_permissions": "STAGE_MODERATOR",
         "role_colour": "0x71368A",
         "role_source": "JSON",
         "hoist": "True",
@@ -51,7 +51,7 @@
     },
     "6": {
         "role_name": "Książę Paplaniny",
-        "role_permissions": "ALL",
+        "role_permissions": "STAGE_MODERATOR",
         "role_colour": "0x9B59B6",
         "role_source": "JSON",
         "hoist": "True",
@@ -61,7 +61,7 @@
     },
     "7": {
         "role_name": "Kruczy Bełkot",
-        "role_permissions": "ALL",
+        "role_permissions": "MEMBERSHIP",
         "role_colour": "0xAD1457",
         "role_source": "JSON",
         "hoist": "True",
@@ -71,7 +71,7 @@
     },
     "8": {
         "role_name": "Głos Bez Końca",
-        "role_permissions": "ALL",
+        "role_permissions": "MEMBERSHIP",
         "role_colour": "0xE91E63",
         "role_source": "JSON",
         "hoist": "True",
@@ -81,7 +81,7 @@
     },
     "9": {
         "role_name": "Władca Jazgotu",
-        "role_permissions": "ALL",
+        "role_permissions": "MEMBERSHIP",
         "role_colour": "0xC27C0E",
         "role_source": "JSON",
         "hoist": "True",
@@ -97,6 +97,6 @@
         "hoist": "True",
         "mentionable": "True",
         "min_points": 2250,
-        "max_points": 2750
+        "max_points": 999999
     }
 }

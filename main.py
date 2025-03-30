@@ -85,34 +85,11 @@ def runtime():
     async def on_thread_create(thread):
         if not thread.author.bot:
             await bot.process_thread(thread)
-        
-    """Commands will be moved to cogs"""
-    @bot.command(
-        help = 'Outputs information about bots connection latency.',
-        description = 'Outputs information about bots'' connection latency',
-        brief = 'Outputs Bot ping',
-        enabled = True,
-        hidden = False #invisible in !help
-        )
-    async def ping(ctx):
-        await ctx.send('pong')
-
-    @bot.command(
-        help = 'Outputs date when a specified user joined the discord channel',
-        description = 'Outputs date when a specified user joined the discord channel',
-        brief = 'Outputs users'' join date',
-        enabled = True,
-        hidden = False
-        )
-    async def joined(ctx, user : dis.Member):
-        user_joined = str(user)+': ' + str(user.joined_at)
-        await ctx.send(user_joined)
-  
 
     """Tasks"""
-    @tasks.loop( minutes=15)
+    @tasks.loop( minutes=5)
     async def update_user_roles(ctx):
-        print('Updating user roles. Looping every 15 minutes.')
+        print('Updating user roles. Looping every 5 minutes.')
         try:
             await bot.apply_roles_from_user_role_view()
         except Exception as e:

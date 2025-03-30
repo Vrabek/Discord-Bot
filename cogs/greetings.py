@@ -8,10 +8,10 @@ class Greetings(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if 'lord' in message.content:
+        if 'xd' in message.content:
             await message.add_reaction("✅")
     
-    @commands.command()
+    @commands.command(hidden = True)
     async def hello(self, ctx, *, member: discord.Member):
         await ctx.send(f"Hello {member.name}")
         

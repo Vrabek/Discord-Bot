@@ -7,8 +7,8 @@ class Ranks:
     async def process_message(self, message: dis.Message):
         """Processes users message and scores it accordingly"""
         print(f"Message {message.id} sent by {message.author}")
-        point_type = self.__determine_point_type(message)
-        await self.add_points(message.id, message.author.id, message.author, PointType.MESSAGE, point_type)
+        point_subtype = self.__determine_point_type(message)
+        await self.add_points(message.id, message.author.id, message.author, PointType.MESSAGE, point_subtype)
 
     async def process_reaction(self, payload: dis.RawReactionActionEvent, member: dis.User):
         """Processes users reaction and scores it accordingly"""
@@ -25,18 +25,18 @@ class Ranks:
     
 
     async def add_points(self, 
-                         message_id, 
-                         user_id, 
-                         user_nickname, 
+                         message_id: str, 
+                         user_id: str, 
+                         user_nickname: str, 
                          point_type,
                          point_subtype = PointSubType.UNSPECIFIED):
         "Method to add points to the user"
         self._save_to_db(message_id, user_id, user_nickname, point_type, point_subtype)
 
     async def reduce_points(self, 
-                            message_id, 
-                            user_id, 
-                            user_nickname, 
+                            message_id: str, 
+                            user_id: str, 
+                            user_nickname: str, 
                             point_type,
                             point_subtype = PointSubType.UNSPECIFIED,
                             mode: str = UserActivity.MODE_REDUCE):

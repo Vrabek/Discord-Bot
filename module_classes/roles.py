@@ -5,13 +5,22 @@ from user_role.models import UserRole
 
 class RoleMenager:
 
+    PERMISSION_PRESETS = {
+        "DEFAULT": dis.Permissions.general(),
+        "STAGE_MODERATOR": dis.Permissions.stage_moderator(),
+        "MEMBERSHIP": dis.Permissions.membership(),
+        "ALL_CHANNELS": dis.Permissions.all_channel(),
+        "ALL": dis.Permissions.all(),
+        "NONE": dis.Permissions.none(),
+    }
+
     async def initialiaze_db_roles(self, guild: dis.Guild):
         '''Initializes roles from the database'''
         
         for role in Roles.select():
             colour  = int(role.role_colour.lstrip("#"), 16)
             print(f"Role: {role.role_name}, Colour: {colour}, Hoist: {role.hoist}, Mentionable: {role.mentionable}")
-            await self.create_role(guild, role.role_name, colour, role.hoist, role.mentionable)
+            await self.create_role(guild, role.role_name, role.role_permissions, colour, role.hoist, role.mentionable)
 
     async def role_exists(self, role_name: str, guild: dis.Guild) -> bool:
         """Checks if a role exists in the guild"""
@@ -25,14 +34,16 @@ class RoleMenager:
     async def create_role(self, 
                           guild: dis.Guild,
                           role_name: str,  
+                          permissions: str,
                           colour: dis.Colour, 
                           hoist: bool, 
                           mentionable: bool) -> dis.Role:
         """Creates a role in the guild"""
+        permissions = self.PERMISSION_PRESETS.get(role_name, dis.Permissions.none())
         if await self.role_exists(role_name, guild) is False:
             new_role = await guild.create_role(    reason = 'Role created by bot.',
                                                         name = role_name,
-                                                        permissions = dis.Permissions.membership(),
+                                                        permissions = permissions,
                                                         colour = colour,
                                                         hoist = hoist,
                                                         display_icon = None,
