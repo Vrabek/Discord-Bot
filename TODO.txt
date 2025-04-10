@@ -1,4 +1,4 @@
-MusuTA3NjUzOTIxNzAyMDIwMzEyOA.GsOqjZ.UH1IiPAmsltePcKLNKB7a92cf07Ylv9a0Kf3JI
+
 2. rozbudowa kommend
 3. specialne role top_user, top_attention_seeking_user
 4. implementacja logger

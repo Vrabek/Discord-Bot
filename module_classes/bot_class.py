@@ -9,7 +9,7 @@ class DiscordBot(commands.Bot):
     role_menager : RoleMenager
     #mój serwer
     #GUILD_ID = 1333466935815442462
-    #rokitnik
+    #rokitnik = 188675437092798465
     GUILD_ID = 188675437092798465
 
     def initialise(self):

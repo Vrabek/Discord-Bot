@@ -8,7 +8,7 @@ class Greetings(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if 'xd' in message.content:
+        if 'XD' in message.content.capitalize():
             await message.add_reaction("✅")
     
     @commands.command(hidden = True)

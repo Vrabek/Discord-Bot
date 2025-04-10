@@ -66,7 +66,7 @@ class Points(commands.Cog):
 
 
     @points.command()
-    async def gift(self, ctx, user = None, points: int = 5):
+    async def gift(self, ctx, user: discord.Member = None, points: int = 5):
             """Gifts points to a specified user (!points gift @user 10)
 
             Args:
@@ -108,6 +108,8 @@ class Points(commands.Cog):
     
     async def __check_member_validity(self, ctx, sender: discord.Member, recipient) -> bool:
         """Checks if the member is valid"""
+        if recipient is None:
+            await ctx.send("You must specify a member!")
         if not isinstance(recipient, discord.Member):
             await ctx.send("Member must be a valid Discord member!")
             return False
