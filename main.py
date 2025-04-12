@@ -11,7 +11,8 @@ import database
 import json
 
 
-cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.cogs']
+cogs = ['cogs.error_handler', 'cogs.greetings', 'cogs.points', 
+        'cogs.music', 'cogs.jcvoice']
 
 
 def setup_db_objects():
